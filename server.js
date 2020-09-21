@@ -14,7 +14,8 @@ app.get('/', function(request, response) {
 
 app.post('/auth', function(request, response) {
 	var username = request.body.username;
-	var password = request.body.password;
+    var password = request.body.password;
+    console.log(username);
 	if (username && password) {
 		// connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
 		// 	if (results.length > 0) {
@@ -27,7 +28,7 @@ app.post('/auth', function(request, response) {
 		// 	response.end();
         // });
         if(username == 'umang' && password=='umang'){
-            response.redirect('Redirected to dasboard');
+            response.sendFile(path.join(__dirname+'/dashbord.html'))
         }
 	} else {
 		response.send('Please enter Username and Password!');
