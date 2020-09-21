@@ -13,6 +13,7 @@ app.get('/', function(request, response) {
 });
 
 app.post('/auth', function(request, response) {
+    console.log(request);
 	var username = request.body.username;
     var password = request.body.password;
     console.log(username);
@@ -27,8 +28,8 @@ app.post('/auth', function(request, response) {
 		// 	}			
 		// 	response.end();
         // });
-        if(username == 'umang' && password=='umang'){
-            response.sendFile(path.join(__dirname+'/dashbord.html'))
+        if(username == "umang" && password=="umang"){
+            response.sendFile(path.join(__dirname+'/dashboard.html'))
         }
 	} else {
 		response.send('Please enter Username and Password!');
