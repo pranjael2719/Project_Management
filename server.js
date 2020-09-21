@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
+    
 	response.sendFile(path.join(__dirname + '/login_page.html'));
 });
 
@@ -30,12 +31,15 @@ app.post('/auth', function(request, response) {
         // });
         if(username == "umang" && password=="umang"){
             response.sendFile(path.join(__dirname+'/dashboard.html'))
+            response.end(JSON.stringify({
+                error : false
+            }));
         }
         else{
             response.sendFile(path.join(__dirname+'/login_page.html'));
             response.end(JSON.stringify({
                 error : true
-            }))
+            }));
         }
 	} else {
 		response.send('Please enter Username and Password!');
