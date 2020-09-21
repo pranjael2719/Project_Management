@@ -31,6 +31,12 @@ app.post('/auth', function(request, response) {
         if(username == "umang" && password=="umang"){
             response.sendFile(path.join(__dirname+'/dashboard.html'))
         }
+        else{
+            response.sendFile(path.join(__dirname+'/login_page.html'));
+            response.end(JSON.stringify({
+                error : true
+            }))
+        }
 	} else {
 		response.send('Please enter Username and Password!');
 		response.end();
