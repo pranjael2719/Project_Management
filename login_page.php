@@ -19,7 +19,7 @@
                             <div style="text-align: center;">
                                 <h3>Login to Continue</h3><br>
                             </div>
-                            <form action="auth" method="POST">
+                            <form action="" method="POST" onsubmit="return check()">
                                 <div class="form-group mb-3">
                                     <label for="email1">User ID </label>
                                     <input type="text" class="form-control" id="email1" aria-describedby="emailHelp" style="border-radius: 40px" placeholder="User ID" required name="username">
@@ -32,8 +32,18 @@
                                     <input id="customCheck1" type="checkbox" class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Sign in</button>
+                                <input type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" value="Sign in">
                             </form>
+                            <?php
+                                if (!empty($_POST)){
+                                    if ($_POST["email1"]=="student"){
+                                        header("Location: http://localhost/Project_Management/student.php");
+                                    }
+                                    else{
+                                        header("Location: http://localhost/Project_Management/teacher.php");
+                                    }
+                                } 
+                            ?>
                         </div>
                     </div>
                 </div>
