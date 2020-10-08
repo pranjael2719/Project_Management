@@ -46,22 +46,19 @@
                                     <input type="password" class="form-control" id="pass" style="border-radius: 40px" placeholder="Password" required name="password">
 									<p id='inpass'></p>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="category">Category</label>
+                                    <select id="category" name="category" class="form-control">
+                                        <option value="teacher" selected>Teacher</option>
+                                        <option value="student">Student</option>
+                                    </select>
+                                </div>
                                 <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" value="Sign in">
                             </form>
-                            <?php
-                                if (!empty($_POST)){
-                                    if ($_POST["username"]=="student"){
-                                        header("Location: http://localhost/Project_Management/student.php");
-                                    }
-                                    else{
-                                        header("Location: http://localhost/Project_Management/teacher.php");
-                                    }
-                                } 
-                            ?>
                         </div>
                     </div>
                 </div>
