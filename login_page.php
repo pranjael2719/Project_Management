@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<script>
 	function check(){
-	var s=0;
-	var n = document.forms["login"]["username"].value;
-	if(n!='student' && n!='teacher'){
+    var s=0;
+    // Fetching the value of userid and passsword from the form 
+    var username = document.forms["login"]["username"].value;   //userid 
+    var password = document.form["login"]["password"].value;    //password
+
+    
+	if(username!='student' && username!='teacher'){
 		s=1;
 		document.getElementById('email1').style.borderColor = 'red';
 		document.getElementById('inuser').innerHTML = 'Invalid Username';
