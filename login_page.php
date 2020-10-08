@@ -11,32 +11,15 @@
     var s=0;
     // Fetching the value of userid and passsword from the form 
     var username = document.forms["login"]["username"].value;   //userid 
-    var password = document.form["login"]["password"].value;    //password
-
-    
-	if(username!='student' && username!='teacher'){
-		s=1;
+    var password = document.forms["login"]["password"].value;    //password
+    var match=(/^(([0-9]{2}[A-Za-z]{3}[0-9]{4})|([0-9]{6}))$/g); //regular expression for userid
+	if(!match.test(username)){
 		document.getElementById('email1').style.borderColor = 'red';
 		document.getElementById('inuser').innerHTML = 'Invalid Username';
 		document.getElementById('inuser').style.color = 'red';
+        return false;
 	}
-	else{
-		document.getElementById('email1').style.borderColor = 'black';
-		document.getElementById('inuser').innerHTML = null;
-	}
-	var n = document.forms["login"]["password"].value;
-	if(n!='admin'){
-		s=1;
-		document.getElementById('pass').style.borderColor = 'red';
-		document.getElementById('inpass').innerHTML = 'Invalid Password';
-		document.getElementById('inpass').style.color = 'red';
-		}
-	else{
-		document.getElementById('pass').style.borderColor = 'black';
-		document.getElementById('inuser').innerHTML = null;
-	}
-	if(s==0)return true;
-	return false;
+	return true;
 	}
 	</script>
 </head>
