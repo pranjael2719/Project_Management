@@ -10,10 +10,11 @@
 	function check(){
     var s=0;
     // Fetching the value of userid and passsword from the form 
-    var username = document.forms["login"]["username"].value;   //userid 
-    var password = document.form["login"]["password"].value;    //password
-
     
+    var username = document.forms["login"]["username"].value;   //userid 
+    var password = document.forms["login"]["password"].value;    //password
+
+
 	if(username!='student' && username!='teacher'){
 		s=1;
 		document.getElementById('email1').style.borderColor = 'red';
@@ -69,16 +70,6 @@
                                 </div>
                                 <input type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm" value="Sign in">
                             </form>
-                            <?php
-                                if (!empty($_POST)){
-                                    if ($_POST["username"]=="student"){
-                                        header("Location: http://localhost/Project_Management/student.php");
-                                    }
-                                    else{
-                                        header("Location: http://localhost/Project_Management/teacher.php");
-                                    }
-                                } 
-                            ?>
                         </div>
                     </div>
                 </div>
@@ -88,3 +79,37 @@
 </div>
 </html>
 </body>
+
+<?php
+   include("config.php");
+   session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $category = mysqli_real_escape_string($db,$_POST['category']); 
+      $sql = "SELECT * FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+		
+      if($count == 1 and $category=="student") {
+         session_register("myusername");
+         $_SESSION['login_user'] = $myusername;
+         
+         header("location: student.php");
+      }
+      elseif($count == 1 and $category=="teacher") {
+        session_register("myusername");
+        $_SESSION['login_user'] = $myusername;
+        
+        header("location: teacher.php");
+     }
+      else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
