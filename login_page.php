@@ -47,6 +47,13 @@
                                     <input type="password" class="form-control" id="pass" style="border-radius: 40px" placeholder="Password" required name="password">
 									<p id='inpass'></p>
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="category">Category</label>
+                                    <select id="category" name="category" class="form-control">
+                                        <option value="teacher" selected>Teacher</option>
+                                        <option value="student">Student</option>
+                                    </select>
+                                </div>
                                 <div class="custom-control custom-checkbox mb-3">
                                     <input id="customCheck1" type="checkbox" class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember password</label>
