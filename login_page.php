@@ -13,15 +13,8 @@
     
     var username = document.forms["login"]["username"].value;   //userid 
     var password = document.forms["login"]["password"].value;    //password
-<<<<<<< HEAD
-
-
-	if(username!='student' && username!='teacher'){
-		s=1;
-=======
     var match=(/^(([0-9]{2}[A-Za-z]{3}[0-9]{4})|([0-9]{6}))$/g); //regular expression for userid
 	if(!match.test(username)){
->>>>>>> 31ab25992a42e7326085bdebeb21c96c68ca9ea7
 		document.getElementById('email1').style.borderColor = 'red';
 		document.getElementById('inuser').innerHTML = 'Invalid Username';
 		document.getElementById('inuser').style.color = 'red';
