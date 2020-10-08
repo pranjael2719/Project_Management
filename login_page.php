@@ -67,7 +67,7 @@
                             </form>
                             <?php
                                 if (!empty($_POST)){
-                                    if ($_POST["email1"]=="student"){
+                                    if ($_POST["username"]=="student"){
                                         header("Location: http://localhost/Project_Management/student.php");
                                     }
                                     else{
