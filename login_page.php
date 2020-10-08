@@ -10,10 +10,18 @@
 	function check(){
     var s=0;
     // Fetching the value of userid and passsword from the form 
+    
     var username = document.forms["login"]["username"].value;   //userid 
     var password = document.forms["login"]["password"].value;    //password
+<<<<<<< HEAD
+
+
+	if(username!='student' && username!='teacher'){
+		s=1;
+=======
     var match=(/^(([0-9]{2}[A-Za-z]{3}[0-9]{4})|([0-9]{6}))$/g); //regular expression for userid
 	if(!match.test(username)){
+>>>>>>> 31ab25992a42e7326085bdebeb21c96c68ca9ea7
 		document.getElementById('email1').style.borderColor = 'red';
 		document.getElementById('inuser').innerHTML = 'Invalid Username';
 		document.getElementById('inuser').style.color = 'red';
@@ -68,3 +76,37 @@
 </div>
 </html>
 </body>
+
+<?php
+   include("config.php");
+   session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      
+      $myusername = mysqli_real_escape_string($db,$_POST['username']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $category = mysqli_real_escape_string($db,$_POST['category']); 
+      $sql = "SELECT * FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+      $result = mysqli_query($db,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+		
+      if($count == 1 and $category=="student") {
+         session_register("myusername");
+         $_SESSION['login_user'] = $myusername;
+         
+         header("location: student.php");
+      }
+      elseif($count == 1 and $category=="teacher") {
+        session_register("myusername");
+        $_SESSION['login_user'] = $myusername;
+        
+        header("location: teacher.php");
+     }
+      else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+?>
