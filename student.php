@@ -10,7 +10,7 @@
             include("config.php");
             session_start();
             $myusername=$_SESSION['login_user'];
-            $sql = "SELECT teach_sub.Subject,teach_sub.Auto FROM teach_sub INNER JOIN auto_role ON teach_sub.Auto=auto_role.Auto WHERE roll_no='$myusername'";
+            $sql = "SELECT classroom.Subject_Name,classroom.Sr_No FROM classroom INNER JOIN project_code ON classroom.Sr_No=project_code.Sr_No WHERE Roll_no='$myusername'";
             $result = mysqli_query($db,$sql);
             if (!$result) {
                 printf("Error: %s\n", mysqli_error($db));
@@ -19,9 +19,8 @@
             while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                    
-                        <h5 class="card-title"><?php echo $row["Subject"]; ?></h5>
-                        <a href="<?php echo "create.php?Auto=".$row["Auto"]?>" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><?php echo $row["Subject_Name"]; ?></h5>
+                        <a href="<?php echo "create.php?Auto=".$row["Sr_No"]?>" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
                 <?php

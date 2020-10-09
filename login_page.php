@@ -78,16 +78,13 @@
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       $category = mysqli_real_escape_string($db,$_POST['category']); 
-      $sql = "SELECT * FROM admin WHERE username = '$myusername' and passcode = '$mypassword' and category='$category'";
+      $sql = "SELECT * FROM admin WHERE username = '$myusername' and password = '$mypassword' and category='$category'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
      
       $count = mysqli_num_rows($result);
       
-      echo $count;
-        echo $category;
-    
       if($count == 1 and $category=="student") {
         //  session_register("myusername");
          $_SESSION['login_user'] = $myusername;

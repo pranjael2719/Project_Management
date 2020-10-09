@@ -61,16 +61,16 @@ $(document).ready(function(){
     include ("config.php");
     $Auto=$_GET['Auto'];
     $myusername=$_SESSION["login_user"];
-    $sql = "SELECT secret_key FROM auto_role WHERE roll_no = '$myusername' and secret_key!='NULL' AND auto_role.Auto='$Auto' ";
+    $sql = "SELECT Group_Code FROM project_code WHERE Roll_no = '$myusername' and Group_Code!='NULL' AND project_code.Sr_No='$Auto' ";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result);
     $count = mysqli_num_rows($result);
     if ($count!=0){
-        $secret = $row['secret_key'];
-        $sql = "SELECT student.StudentName FROM student INNER JOIN auto_role ON student.roll_no=auto_role.roll_no WHERE auto_role.secret_key='$secret' AND auto_role.Auto='$Auto' ";
+        $secret = $row['Group_Code'];
+        $sql = "SELECT student.Name FROM student INNER JOIN project_code ON student.Roll_no=project_code.Roll_no WHEREproject_code.Group_Code='$secret' AND project_code.Sr_No='$Auto' ";
         $result = mysqli_query($db,$sql);
         while($row = mysqli_fetch_array($result)){
-            echo $row["StudentName"]."<br>";
+            echo $row["Name"]."<br>";
         }
     }
     else{
