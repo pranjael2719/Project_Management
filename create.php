@@ -63,10 +63,15 @@ $(document).ready(function(){
     $myusername=$_SESSION["login_user"];
     $sql = "SELECT secret_key FROM auto_role WHERE roll_no = '$myusername' and secret_key!='NULL' AND auto_role.Auto='$Auto' ";
     $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $row = mysqli_fetch_array($result);
     $count = mysqli_num_rows($result);
-    if ($count==0){
-        //displaying the team members
+    if ($count!=0){
+        $secret = $row['secret_key'];
+        $sql = "SELECT student.StudentName FROM student INNER JOIN auto_role ON student.roll_no=auto_role.roll_no WHERE auto_role.secret_key='$secret' AND auto_role.Auto='$Auto' ";
+        $result = mysqli_query($db,$sql);
+        while($row = mysqli_fetch_array($result)){
+            echo $row["StudentName"]."<br>";
+        }
     }
     else{
         $rand_number = rand(100000,10000000);
