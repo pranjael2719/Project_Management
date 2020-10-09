@@ -11,7 +11,7 @@ $count = mysqli_num_rows($result);
 if ($count != 0) {
     $secret = $row['Group_Code'];
 
-    echo "The team secret key for members to join is ".$secret."<br><br>";
+    echo "The team secret key for members to join is ".$secret."<br><br>    ";
     $sql = "SELECT student.Name FROM student INNER JOIN project_code ON student.Roll_no=project_code.Roll_no WHERE project_code.Group_Code='$secret' AND project_code.Sr_No='$Auto' ";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_array($result)) {
