@@ -1,11 +1,15 @@
 <!DOCTYPE html>
     <head>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>
             Student
         </title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="Style.css">
     </head>
     <body>
+		<div class="container">
         <?php 
             include("config.php");
             session_start();
@@ -16,15 +20,24 @@
                 printf("Error: %s\n", mysqli_error($db));
                 exit();
             }
-            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $row["Subject_Name"]; ?></h5>
-                        <a href="<?php echo "create.php?Auto=".$row["Sr_No"]?>" class="btn btn-primary">Go somewhere</a>
+            $count=0;
+            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){?>
+                <div class="card">
+					<div class="face face1">
+						<div class="content">
+								<img src="subject_name.png">
+								<h3><?php echo $row["Subject_Name"]; ?></h3>
+						</div>
+					</div>
+					<div class="face face2">
+						<div class="content">
+							<a href="<?php echo "create.php?Auto=".$row["Sr_No"]?>">Go somewhere</a>
+						</div>
                     </div>
                 </div>
                 <?php
             }
         ?>
+        </div>
     </body>
 </html>
