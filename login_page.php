@@ -75,7 +75,6 @@
    session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       $category = mysqli_real_escape_string($db,$_POST['category']); 
@@ -92,7 +91,6 @@
       if($count == 1 and $category=="student") {
         //  session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-         
          header("location: student.php");
       }
       elseif($count == 1 and $category=="teacher") {
