@@ -102,7 +102,8 @@
         header("location: teacher.php");
      }
       else {
-         $error = "Your Login Name or Password is invalid";
+        
+         echo '<script>alert("Invalid Credentials") </script>';
       }
    }
 ?>
