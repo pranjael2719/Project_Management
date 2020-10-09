@@ -9,7 +9,13 @@
                 <b><h2 style='text-align: center; color:brown;'>ABC Bank Loan Management</h2></b>
                 <form >
                     <p>Student!!!</p>
+
                 </form>
         </div>
     </body>
 </html>
+
+<?php
+session_start();
+echo $_SESSION['login_user'];
+?>
