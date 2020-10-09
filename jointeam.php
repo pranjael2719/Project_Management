@@ -3,6 +3,8 @@
     include ("config.php");
 
    $username =$_SESSION['login_user'];
+
+   $sno = $_SESSION['sno'];
     // getting the secret key for the user
     
     $secret = $_POST['secret'];
@@ -23,10 +25,14 @@
 
     $team_name = $row['Team_Name'];
 
-    $sql1 = "INSERT INTO project_code(Group_Code,Team_Name) values('$secret','$team_name') WHERE Roll_No='$username' ";
+    // INSERT IS NOT TO BE USED TO WHILE UPDATING THE TABLE USE THE UPDATE KEY 
+
+    $sql1= "UPDATE project_code SET Group_Code='$secret',Team_Name='$team_name' WHERE Roll_No='$username' AND Sr_no= '$sno '";
+    
     
     if($db->query($sql1) ===TRUE){
         echo "New Record Inserted";
+        header("location: create.php")
     }
     else{
         echo "Error: " . $sql . "<br>" . $db->error;
