@@ -75,10 +75,9 @@
    session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      $category = mysqli_real_escape_string($db,$_POST['category']); 
+      $category = mysqli_real_escape_string($db,$_POST['category']);
       $sql = "SELECT * FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
@@ -89,7 +88,6 @@
       if($count == 1 and $category=="student") {
          session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-         
          header("location: student.php");
       }
       elseif($count == 1 and $category=="teacher") {
