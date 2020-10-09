@@ -9,7 +9,7 @@ $row = mysqli_fetch_array($result);
 $count = mysqli_num_rows($result);
 if ($count != 0) {
     $secret = $row['Group_Code'];
-    $sql = "SELECT student.Name FROM student INNER JOIN project_code ON student.Roll_no=project_code.Roll_no WHEREproject_code.Group_Code='$secret' AND project_code.Sr_No='$Auto' ";
+    $sql = "SELECT student.Name FROM student INNER JOIN project_code ON student.Roll_no=project_code.Roll_no WHERE project_code.Group_Code='$secret' AND project_code.Sr_No='$Auto' ";
     $result = mysqli_query($db, $sql);
     while ($row = mysqli_fetch_array($result)) {
         echo $row["Name"] . "<br>";
