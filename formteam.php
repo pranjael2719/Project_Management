@@ -33,7 +33,7 @@
         
         if($db->query($sql1) ===TRUE){
             echo "New Record Inserted";
-            header("location: create.php")
+            header("location: create.php");
         }
         else{
             echo "Error: " . $sql . "<br>" . $db->error;
