@@ -26,7 +26,7 @@
 
     $groupcode = $row['Group_Code'];
 
-    if($groupcode != NULL) echo " You already have a team ";
+    if($groupcode != "NULL") echo " You already have a team ";
     else{
         $sql1= "UPDATE project_code SET Group_Code='$secret_key',Team_Name='$teamname' WHERE Roll_No='$user' AND Sr_no= '$sno '";
         

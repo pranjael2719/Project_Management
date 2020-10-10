@@ -4,20 +4,6 @@ include("config.php");
 $Auto = $_GET['Auto'];
 $_SESSION['sno']= $Auto;
 $myusername = $_SESSION["login_user"];
-$sql = "SELECT Group_Code FROM project_code WHERE Roll_no = '$myusername' and Group_Code!='NULL' AND project_code.Sr_No='$Auto' ";
-$result = mysqli_query($db, $sql);
-$row = mysqli_fetch_array($result);
-$count = mysqli_num_rows($result);
-if ($count != 0) {
-    $secret = $row['Group_Code'];
-
-    echo "The team secret key for members to join is ".$secret."<br><br>    ";
-    $sql = "SELECT student.Name FROM student INNER JOIN project_code ON student.Roll_no=project_code.Roll_no WHERE project_code.Group_Code='$secret' AND project_code.Sr_No='$Auto' ";
-    $result = mysqli_query($db, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        echo $row["Name"] . "<br>";
-    }
-} else {
    
 ?>
     <!DOCTYPE html>
@@ -67,14 +53,8 @@ if ($count != 0) {
         <form id="MyForm1" action="teamsize.php" method="POST">
             <label>Fix team size </label><br><br>
             <input type="text" name="secret" placeholder="Enter the Team Size" /><br><br>
-
             <input type="submit" class="btn btn-default" name="submit" value="Submit" />
         </form>
     </body>
 
     </html>
-<?php
-
-
-}
-?>
