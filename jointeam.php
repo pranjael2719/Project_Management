@@ -32,7 +32,8 @@
     
     if($db->query($sql1) ===TRUE){
         echo "New Record Inserted";
-        header("location: create.php")
+        $a="create.php?Auto=".$sno;
+        header("location: ".$a);
     }
     else{
         echo "Error: " . $sql . "<br>" . $db->error;
