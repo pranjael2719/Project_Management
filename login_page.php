@@ -13,7 +13,7 @@
     
     var username = document.forms["login"]["username"].value;   //userid 
     var password = document.forms["login"]["password"].value;    //password
-    var match=(/^(([0-9]{2}[A-Za-z]{3}[0-9]{4})|([0-9]{6}))$/g); //regular expression for userid
+    var match=(/^(([0-9]{2}[A-Za-z]{3}[0-9]{4})|([0-9]{5}))$/g); //regular expression for userid
 	if(!match.test(username)){
 		document.getElementById('email1').style.borderColor = 'red';
 		document.getElementById('inuser').innerHTML = 'Invalid Username';

@@ -1,15 +1,43 @@
 <!DOCTYPE html>
     <head>
+		<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>
-            Bank Loan Management
+            Teacher
         </title>
+        <link rel="stylesheet" href="Style.css">
     </head>
-    <body style="background-color: orange;  text-align: center; margin-top: 150px;" >
-        <div id="bdiv" style="font-size: large; font-weight: bolder; display: inline-block; border: 1px solid #add8e6; border-radius: 4px; box-sizing: border-box; padding: 20px; background-color: #add8e6;">
-                <b><h2 style='text-align: center; color:brown;'>ABC Bank Loan Management</h2></b>
-                <form >
-                    <p>Teacher!!!</p>
-                </form>
+    <body>
+		<div class="container">
+        <?php 
+            include("config.php");
+            session_start();
+            $myusername=$_SESSION['login_user'];
+            $sql = "SELECT Subject_Name,Sr_No,Slot FROM classroom WHERE Emp_ID='$myusername'";
+            $result = mysqli_query($db,$sql);
+            if (!$result) {
+                printf("Error: %s\n", mysqli_error($db));
+                exit();
+            }
+            $count=0;
+            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){?>
+                <div class="card">
+					<div class="face face1">
+						<div class="content">
+								<img src="subject_name.png">
+								<h3><?php echo $row["Subject_Name"]."  "; echo $row["Slot"];?></h3>
+						</div>
+					</div>
+					<div class="face face2">
+						<div class="content">
+							<a href="<?php echo "display.php?Auto=".$row["Sr_No"]?>">Go somewhere</a>
+						</div>
+                    </div>
+                </div>
+                <?php
+            }
+        ?>
         </div>
     </body>
 </html>
