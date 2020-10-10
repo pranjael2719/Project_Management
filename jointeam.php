@@ -1,4 +1,7 @@
+
 <?php
+    // have to check for the team size yet .. 
+    
     session_start();
     include ("config.php");
 
