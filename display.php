@@ -52,7 +52,7 @@ $myusername = $_SESSION["login_user"];
 
         <form id="MyForm1" action="teamsize.php" method="POST">
             <label>Fix team size </label><br><br>
-            <input type="text" name="secret" placeholder="Enter the Team Size" /><br><br>
+            <input type="text" name="team" placeholder="Enter the Team Size" /><br><br>
             <input type="submit" class="btn btn-default" name="submit" value="Submit" />
         </form>
     </body>

@@ -9,38 +9,34 @@
     
     include("config.php");
     $sno = $_SESSION['sno'];
-
-    echo $sno;
-
-    $sql = "SELECT (Group_Code) FROM project_code WHERE Roll_No='$user' AND Sr_no= '$sno ' ";
-
-    $result = mysqli_query($db, $sql);
-
-    
-    
-    $count = mysqli_num_rows($result);
-
-   
-    
+    $sql="SELECT Max_Students FROM classroom WHERE Sr_no='$sno'";
+    $result=mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result);
-
-    $groupcode = $row['Group_Code'];
-
-    if($groupcode != "NULL") echo " You already have a team ";
+    if($row['Max_Students']==NULL){
+        echo "The team size is not yet mentioned by the teacher.";
+    }
     else{
-        $sql1= "UPDATE project_code SET Group_Code='$secret_key',Team_Name='$teamname' WHERE Roll_No='$user' AND Sr_no= '$sno '";
-        
-        
-        if($db->query($sql1) ===TRUE){
-            echo "New Record Inserted";
-            $a="create.php?Auto=".$sno;
-            header("location: ".$a);
-        }
+        $sql = "SELECT (Group_Code) FROM project_code WHERE Roll_No='$user' AND Sr_no= '$sno ' ";
+        $result = mysqli_query($db, $sql);
+        $count = mysqli_num_rows($result);
+        $row = mysqli_fetch_array($result);
+        $groupcode = $row['Group_Code'];
+        if($groupcode != "NULL") echo " You already have a team ";
         else{
-            echo "Error: " . $sql . "<br>" . $db->error;
+            $sql1= "UPDATE project_code SET Group_Code='$secret_key',Team_Name='$teamname' WHERE Roll_No='$user' AND Sr_no= '$sno '";
+            
+            
+            if($db->query($sql1) ===TRUE){
+                echo "New Record Inserted";
+                $a="create.php?Auto=".$sno;
+                header("location: ".$a);
+            }
+            else{
+                echo "Error: " . $sql . "<br>" . $db->error;
+            }
+
+
         }
-
-
     }
 
 
