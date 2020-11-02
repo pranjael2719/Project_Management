@@ -12,11 +12,10 @@
     
     // Now insert the record into the database 
     
-    $sql = "SELECT Team_Name from project_code where Group_Code='$secret'";
+    $sql = "SELECT Team_Name from project_code where Group_Code='$secret' and Sr_No='$sno' ";
     $result = mysqli_query($db, $sql);
     
     $count = mysqli_num_rows($result);
-    
     if($count >0 ){
     
     $row = mysqli_fetch_array($result);
