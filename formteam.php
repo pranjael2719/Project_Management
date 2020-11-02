@@ -16,7 +16,7 @@
         echo "The team size is not yet mentioned by the teacher.";
     }
     else{
-        $sql = "SELECT (Group_Code) FROM project_code WHERE Roll_No='$user' AND Sr_no= '$sno ' ";
+        $sql = "SELECT Group_Code FROM project_code WHERE Roll_No='$user' AND Sr_no= '$sno ' ";
         $result = mysqli_query($db, $sql);
         $count = mysqli_num_rows($result);
         $row = mysqli_fetch_array($result);
