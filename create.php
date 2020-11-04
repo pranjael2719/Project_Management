@@ -74,7 +74,7 @@ if ($count != 0) {
             <label>Secret Key</label><br><br>
             <input type="text" name="secret" placeholder="Enter the Secret Key" /><br><br>
 
-            <input type="submit" class="btn btn-default" name="submit" value="Submit" />
+            <button type="submit" class="btn btn-default" name="submit" value="Submit" >Submit </button>
         </form>
     </body>
 
