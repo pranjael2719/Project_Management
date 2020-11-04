@@ -2,7 +2,6 @@
 session_start();
 include("config.php");
 $Auto = $_GET['Auto'];
-$_SESSION['sno']= $Auto;
 $myusername = $_SESSION["login_user"];
    
 ?>
@@ -38,13 +37,29 @@ $myusername = $_SESSION["login_user"];
         </form>
 		<div class="form-design">
 			<div class="box">
-        <form id="MyForm1" action="teamsize.php" method="POST">
+        <form id="MyForm1" action="" method="POST">
             <label>Fix team size </label><br><br>
             <input type="text" name="team" placeholder="Enter the Team Size" /><br><br>
             <button type="submit" class="btn btn-default" name="submit" value="Submit">Submit</button>
         </form>
 		</div>
 		</div>
+        <?php
+            if(!empty($_POST)){
+                if($_POST["submit"]=="Submit"){
+                    $size=$_POST['team'];
+                    $sql1= "UPDATE classroom SET Max_Students='$size'WHERE Sr_no= '$Auto '";
+                    if($db->query($sql1) ===TRUE){
+                        echo "<script>alert('Team size fixed.')</script>";
+                        //$a="display.php?Auto=".$sno;
+                        //header("location: ".$a);
+                    }
+                    else{
+                        echo "Error: " . $sql . "<br>" . $db->error;
+                    }
+                }
+            }
+        ?>
     </body>
 
     </html>
