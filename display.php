@@ -14,20 +14,7 @@ $myusername = $_SESSION["login_user"];
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Document</title>
-        <style>
-         
-
-            #MyForm1 {
-                display: none;
-                width: 300px;
-                border: 1px solid #ccc;
-                padding: 14px;
-                background: #ececec;
-            }
-           
-        
-
-        </style>
+        <link rel="stylesheet" href="Button.css">
 
         <script>
             $(document).ready(function() {
@@ -45,16 +32,19 @@ $myusername = $_SESSION["login_user"];
 
     <body>
         
-        <button id="Mybtn2" class="btn btn-primary">Team Size</button>
+        <button id="Mybtn2" class="corner-button"><span>Team Size</span></button>
         <form id="MyForm" action="view.php" method="post">
-            <input type="submit" class="btn btn-default" name="submit" value="View Team" />
+            <button type="submit" class="corner-button" name="submit" value="View Team"><span>View Team</span></button>
         </form>
-
+		<div class="form-design">
+			<div class="box">
         <form id="MyForm1" action="teamsize.php" method="POST">
             <label>Fix team size </label><br><br>
             <input type="text" name="team" placeholder="Enter the Team Size" /><br><br>
-            <input type="submit" class="btn btn-default" name="submit" value="Submit" />
+            <button type="submit" class="btn btn-default" name="submit" value="Submit">Submit</button>
         </form>
+		</div>
+		</div>
     </body>
 
     </html>

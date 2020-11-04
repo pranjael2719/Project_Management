@@ -5,7 +5,7 @@
     $size=$_POST['team'];
     $sql1= "UPDATE classroom SET Max_Students='$size'WHERE Sr_no= '$sno '";
     if($db->query($sql1) ===TRUE){
-        echo "Team size fixed.";
+        echo "<script>alert('Team size fixed.')</script>";
         //$a="display.php?Auto=".$sno;
         //header("location: ".$a);
     }
