@@ -1,4 +1,32 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<style>
+		body {
+		background: #2f2f2f;
+		}
+		.form-design{
+		width:500px;
+		padding:30px;
+		margin:40px auto;
+		background: #2f2f2f;
+		border-radius: 10px;
+		 border: 1px solid white;
+		}
+		.form-design .box{
+		padding: 30px;
+		border-radius: 10px;
+		margin-bottom: 20px;
+		background: magenta;
+		color: white;
+		}
+    </style>
+</head>
+<body>
+<div class='form-design'><div class='box'>
 <?php
     // have to check for the team size yet .. 
     
@@ -46,8 +74,12 @@
     }
     }
     else{
-        echo "<h1>This team does not exsistes</h1>";
+        echo "This team does not exists";
     }
 
     
 ?>
+</div>
+</div>
+</body>
+</html>
